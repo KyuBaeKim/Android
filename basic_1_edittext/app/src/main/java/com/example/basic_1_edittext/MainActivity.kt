@@ -1,5 +1,6 @@
 package com.example.basic_1_edittext
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +26,13 @@ class MainActivity : AppCompatActivity() {
         "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MjJfMjM5%2FMDAxNjI5NTY0MDcyODc0.Rc3jaS6zZduQYGtqGo9ep6f-NDMql8FEcIwXSiRRQNAg.y_3RyGmlv-2aPrmFfQECxchL1cluwAAGtJwF-ZRbY4og.JPEG.alsgml7640%2FIMG_8063.jpg&type=sc960_832"
     )
     var current_image = 0
+
+    companion object{ // 어떤 호출인지 상수로 정의
+        val REQUEST = 0
+        val ID = "ID"
+        val PASSWD = "PASSWD"
+        val RESULT = "RESULT"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +84,25 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        btnLogin.setOnClickListener {
+            val i = Intent(this, ResultActivity::class.java)
+            i.putExtra(ID, editName.text.toString())
+            i.putExtra(PASSWD, editPassWD.text.toString())
+
+            startActivityForResult(i, REQUEST)
+        }
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            Log.i("MainActivity", "onActivityResult $data")
+            if(requestCode != REQUEST) return
+
+            data?.getStringExtra(RESULT).let{
+                textMessage.text = it
+            }
+            super.onActivityResult(requestCode,resultCode, data)
+        }
+
 
     fun loadImage(url: String) = Glide.with(this)
                                     .load(imageUrls[current_image])

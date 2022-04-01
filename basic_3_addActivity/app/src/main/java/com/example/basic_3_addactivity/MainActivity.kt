@@ -6,6 +6,9 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val TEXT_KEY = "TEXT"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -13,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         btnOk.setOnClickListener {
 
             val i = Intent(this, Main2Activity::class.java)
+            i.putExtra(TEXT_KEY,"Hello!!!!!")
             startActivity(i)
          }
     }
