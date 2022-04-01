@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Basic_3_recyclerview">
         <activity
+            android:name=".MainAdapter"
+            android:exported="false" />
+        <activity
             android:name=".MainData"
             android:exported="false" />
         <activity
