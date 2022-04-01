@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">basic_1_textview</string>
+    <string name="normal_text">Normal Text</string>
+
+</resources>
