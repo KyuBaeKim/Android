@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         btnToast2.setOnClickListener {
             showCustom("안녕하세요!")
         }
+        btnNoti.setOnClickListener {
+            NewMessageNotification.notify(application, "Hi", 3)
+        }
     }
 
     private fun showCustom(s : String){
