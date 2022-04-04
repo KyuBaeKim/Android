@@ -7,20 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_main.view.*
 
-class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>()
+class MainAdapter(var items: MutableList<MainData>, val l: (Int) -> Unit): RecyclerView.Adapter<MainAdapter.MainViewHolder>()
 {
-    var items: MutableList<MainData> = mutableListOf(
-                                MainData("Title1","Content1"),
-                                MainData("Title2","Content2"),
-                                MainData("Title3","Content3"),
-    )
+
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+        holder.itemView.setOnClickListener{
+            l(position)
+        }
        items[position].let { item ->
            with(holder){
                tvTitle.text = item.title
                tvContent.text = item.content
+               Glide.with(itemView)
+                   .load(item.image)
+                   .override(64, 64) // 메모리 이미지 크기조절
+                   .into(imageView)
+
            }
        }
     }
@@ -29,14 +34,20 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.MainViewHolder>()
             RecyclerView.ViewHolder(itemView){
                 val tvTitle = itemView.tv_main_title
                 val tvContent = itemView.tv_main_content
+                val imageView = itemView.imageView
             }
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): MainViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_main, parent, false)
-        return MainViewHolder(view)
 
+
+        return MainViewHolder(view)
     }
+
+
+
+
 
 
 
