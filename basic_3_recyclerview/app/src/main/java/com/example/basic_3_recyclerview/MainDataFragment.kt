@@ -1,15 +1,19 @@
 package com.example.basic_3_recyclerview
 
+import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_main_data.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_MAIN_DATA = "MAIN_DATA"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -18,14 +22,14 @@ private const val ARG_PARAM2 = "param2"
  */
 class MainDataFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var mainData: MainData? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            mainData = it.getParcelable(ARG_MAIN_DATA)
+
         }
     }
 
@@ -37,22 +41,21 @@ class MainDataFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main_data, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        txtTitle.text = mainData!!.title // null이 아님을 개발자가 보장하겠다
+        txtContent.text = mainData!!.content
+        Glide.with(this).load(mainData!!.image).into(mainImage)
+
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainDataFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(mainData: MainData) =
             MainDataFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putParcelable(ARG_MAIN_DATA, mainData)
                 }
             }
     }

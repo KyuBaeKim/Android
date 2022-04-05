@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main_detail.*
 import kotlinx.android.synthetic.main.item_main.*
+import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
 //    var items: MutableList<MainData> = mutableListOf(
@@ -26,12 +28,19 @@ class MainActivity : AppCompatActivity() {
             val title = edtTitle.text.toString() // 문자열 끄낼때 toString
             val content = edtContent.text.toString()
             val item = MainData(title, content, "")
-            MainData.items += item
+            MainDatas.items += item
 
             rv_main_list.adapter?.notifyDataSetChanged()
 
             edtTitle.setText("") // 문자열 쓸때 setText
             edtContent.setText("")
+
+          timer(period = 3000) {
+                runOnUiThread{
+                    viewPager.currentItem =
+                        (viewPager.currentItem + 1) % MainDatas.items.size
+                }
+            }
         }
     }
 

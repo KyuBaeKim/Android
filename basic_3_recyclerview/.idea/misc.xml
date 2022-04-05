@@ -8,7 +8,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22677459716796877" />
         <entry key="app/src/main/res/layout/activity_main_adapter.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main_data.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_main_data_pager_adapter.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main_detail.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_main_data.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/item_main.xml" value="0.26092746015908064" />
       </map>
     </option>
