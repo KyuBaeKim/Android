@@ -11,7 +11,6 @@
         android:layout_width="288dp"
         android:layout_height="57dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="검색어를 입려하세요."
         android:inputType="textPersonName"
@@ -23,7 +22,6 @@
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:text="검색"
         app:layout_constraintBottom_toTopOf="@+id/imageListView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,29 +33,33 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imageListView"
         android:layout_width="408dp"
-        android:layout_height="547dp"
+        android:layout_height="514dp"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/editKeyword"
         tools:layout_editor_absoluteX="2dp" />
 
     <TextView
         android:id="@+id/txtWeather"
-        android:layout_width="303dp"
-        android:layout_height="51dp"
+        android:layout_width="289dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageListView"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="75dp"
-        android:layout_height="59dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="670dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_width="85dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtWeather"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageListView"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
